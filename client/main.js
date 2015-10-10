@@ -18,3 +18,11 @@ Template.body.events({
         console.log(event.target);
     }
 });
+
+Template.panel.events({
+    'click .pin.icon': function (event) {
+        if (!Meteor.call("hasMic", "name")) {
+            Meteor.call("addMic", "name", "laptop");
+        }
+    },
+});

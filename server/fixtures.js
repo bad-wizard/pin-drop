@@ -9,15 +9,15 @@ Meteor.startup(function () {
   if (Accounts.loginServiceConfiguration.find({service: 'github'}).count() === 0) {
     Accounts.loginServiceConfiguration.insert({
       service: 'github',
-      appId: Meteor.settings.Facebook.appId,
-      secret: Meteor.settings.Facebook.secret,
+      clientId: Meteor.settings.GitHub.clientId,
+      secret: Meteor.settings.GitHub.secret,
     });
   }
   if (Accounts.loginServiceConfiguration.find({service: 'facebook'}).count() === 0) {
     Accounts.loginServiceConfiguration.insert({
       service: 'facebook',
-      clientId: Meteor.settings.Google.clientId,
-      secret: Meteor.settings.Google.secret,
+      appId: Meteor.settings.Facebook.appId,
+      secret: Meteor.settings.Facebook.secret,
     });
   }
 });

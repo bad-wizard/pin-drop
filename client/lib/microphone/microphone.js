@@ -59,9 +59,6 @@ var collectData = function(){
         Session.set("data2", data2);
         Session.set("data3", data3);
     }
-    if (!Meteor.call("hasMic", "name")) {
-        Meteor.call("addMic", "name", "laptop");
-    }
 };
 var monitor = setInterval(collectData, 500);
 
