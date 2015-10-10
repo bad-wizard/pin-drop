@@ -1,0 +1,76 @@
+<head>
+  <meta charset="UTF-8">
+  <title>Pin Drop</title>
+</head>
+
+<body>
+    {{> modal}}
+    <div id = "main-panel">
+        <h1>Pin Drop☂</h1>
+        {{> loginButtons align="right"}}
+        <div id = "user-menu">
+            {{> panel}}
+        </div>
+
+    </div>
+</body>
+
+<template name="chart">
+    <div class = "chart"></div>
+</template>
+
+<template name="controls">
+    <div class="tiny black ui buttons">
+        <button id = "back" class="ui left labeled icon button {{#if playing}}expandable{{/if}}">
+            <i class="left chevron icon"></i>{{#unless playing}}Back{{/unless}}
+        </button>
+        {{#if playing}}
+            <button id = "pause" class="ui button">
+                <i class="pause icon"></i>Pause
+            </button>
+        {{else}}
+            <button id = "play" class="ui button">
+                <i class="play icon"></i>Play
+            </button>
+        {{/if}}
+        <button id = "forward" class="ui right labeled icon button {{#if playing}}expandable{{/if}}">{{#unless playing}}Forward{{/unless}}
+            <i class="right chevron icon"></i>
+        </button>
+    </div>
+</template>
+
+<template name="panel">
+    <div class="ui top attached tabular menu">
+        <a class="active item">
+            <i class="laptop icon"></i>
+            Home
+        </a>
+        <a class="item">
+            <i class="mobile icon"></i>
+            Archimedes
+        </a>
+        <div class="right menu">
+            <a class="item">
+                <i class="pin icon"></i> Pin This Mic
+            </a>
+        </div>
+    </div>
+    <div class="ui bottom attached segment">
+        {{#if currentUser}}
+            {{> chart}}
+            <div id = "control-panel">
+                {{> controls}}
+            </div>
+        {{/if}}
+    </div>
+</template>
+
+<template name="modal">
+    <div id = "listen-or-record" class="ui basic modal">
+        <div class="massive ui buttons">
+            <button id="listening" class="ui button">I'm Listening</button>
+            <div class="or"></div>
+            <button id="recording" class="ui black button">I'm Recording</button>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,61 @@
+/** Imports */
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+/** Elements */
+body {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+h1 {
+    font: 400 8em/1em"Poiret One";
+}
+
+/** IDs */
+#listen-or-record {
+    text-align: center;
+}
+
+#login-buttons .login-button, .accounts-dialog .login-button {
+    background: #1b1c1d;
+    border: black;
+    -webkit-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2) inset;
+    -moz-box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+#login-buttons .login-button:hover, .accounts-dialog .login-button:hover {
+    background: ghostwhite;
+    color: black;
+}
+
+#main-panel {
+    height: auto;
+    margin: auto;
+    padding-top: 4em;
+    width: 80%;
+}
+
+/** Classes */
+.chart {
+    margin: 2em 0;
+}
+
+.ui[class*="left labeled"].icon.button.expandable {
+    padding-right: 0 !important;
+    -webkit-transition: padding-right 2s ease;
+    -moz-transition: padding-right 2s ease;
+    -ms-transition: padding-right 2s ease;
+    -o-transition: padding-right 2s ease;
+    transition: padding-right 2s ease;
+}
+
+.ui[class*="right labeled"].icon.button.expandable {
+    padding-left: 0 !important;
+    -webkit-transition: padding-left 2s ease;
+    -moz-transition: padding-left 2s ease;
+    -ms-transition: padding-left 2s ease;
+    -o-transition: padding-left 2s ease;
+    transition: padding-left 2s ease;
+}
