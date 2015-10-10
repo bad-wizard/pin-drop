@@ -1,0 +1,23 @@
+<template name="chart">
+    <div class = "chart"></div>
+</template>
+
+<template name="controls">
+    <div class="tiny black ui buttons">
+        <button id = "back" class="ui left labeled icon button {{#if playing}}expandable{{/if}}">
+            <i class="left chevron icon"></i>{{#unless playing}}Back{{/unless}}
+        </button>
+        {{#if playing}}
+            <button id = "pause" class="ui button">
+                <i class="pause icon"></i>Pause
+            </button>
+        {{else}}
+            <button id = "play" class="ui button">
+                <i class="play icon"></i>Play
+            </button>
+        {{/if}}
+        <button id = "forward" class="ui right labeled icon button {{#if playing}}expandable{{/if}}">{{#unless playing}}Forward{{/unless}}
+            <i class="right chevron icon"></i>
+        </button>
+    </div>
+</template>

@@ -1,0 +1,27 @@
+<template name="panel">
+    <div class="ui top attached tabular menu">
+        <a class="active item">
+            <i class="laptop icon"></i>
+            Home
+        </a>
+        <a class="item">
+            <i class="mobile icon"></i>
+            Archimedes
+        </a>
+        <div class="right menu">
+            <a class="item">
+                <i class="pin icon"></i> Pin This Mic
+            </a>
+        </div>
+    </div>
+    <div class="ui bottom attached segment">
+        {{#if currentUser}}
+            {{> chart}}
+            <div class="" style="position: absolute; top: {{pos.top}}px;"></div>
+            <a class="ui red circular label" style="position: absolute; top: {{pos.top}}px;">{{pos.left}}</a>
+            <div id = "control-panel">
+                {{> controls}}
+            </div>
+        {{/if}}
+    </div>
+</template>
