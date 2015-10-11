@@ -45,7 +45,7 @@ var collectData = function(){
             if (packet[i] && packet[i][1]) {
                 for (var j = 0; j < 400; j+=50) {
                     timestamps.push(packet[i][0]);
-                    var n1 = parseFloat(j).toFixed(4).toString();
+                    var n1 = parseFloat(j).toFixed(2).toString();
                     var n2 = (j + 400).toString();
                     var n3 = (j + 800).toString();
                     data1.push(packet[i][1][n1]);
