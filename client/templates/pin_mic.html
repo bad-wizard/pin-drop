@@ -1,0 +1,43 @@
+<template name="pin_mic">
+    <a class="item" id="open-add-mic">
+        <i class="pin icon"></i> Pin This Mic
+    </a>
+    
+    <div id="add-mic-modal" class="ui modal">
+        {{> add_mic_modal}}
+    </div>
+</template>
+
+<template name="add_mic_modal">
+<div class="header">Pin This Mic</div>
+<div class="content">
+    <form id="add-mic" class="ui form">
+        <div class="two fields">
+        <div class="field">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Name">
+        </div>
+        <div class="field" id="device-selector">
+            <label>Device</label>
+	    <select class="ui dropdown" name="device">
+	        <option value="">Device</option>
+		{{#each devices}}
+    	            {{> device}}
+		{{/each}}
+	    </select>
+        </div>
+	</div>
+    </form>
+</div>
+<div class="actions">
+    <button class="ui button" type="submit" form="add-mic">Pin</button>
+    <div class="ui cancel button">Cancel</div>
+</div>
+</template>
+
+<template name="device">
+<option value="{{name}}">
+    <i class="{{name}} icon"></i>
+    {{name}}
+</option>
+</template>

@@ -1,6 +1,6 @@
 <template name="panel">
     <div class="ui top attached tabular menu">
-        <a class="active item">
+        <a class="item">
             <i class="laptop icon"></i>
             Home
         </a>
@@ -9,9 +9,7 @@
             Archimedes
         </a>
         <div class="right menu">
-            <a class="item">
-                <i class="pin icon"></i> Pin This Mic
-            </a>
+            {{> pin_mic}}
         </div>
     </div>
     <div class="ui bottom attached segment">

@@ -1,6 +1,3 @@
-/**
- * Created by Barbara on 10/10/2015.
- */
 Template.panel.helpers({
     pos: function() {
         var region = $('.threshold')[0];
@@ -17,9 +14,4 @@ Template.panel.helpers({
 });
 
 Template.panel.events({
-    'click .pin.icon': function (event) {
-        if (!Meteor.call("hasMic", "name")) {
-            Meteor.call("addMic", "name", "laptop");
-        }
-    }
 });

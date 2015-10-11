@@ -3,7 +3,7 @@ Accounts.ui.config({
 });
 
 Meteor.startup(function (){
-    $('.ui.basic.modal').modal('show');
+//    $('#listen-or-record').modal('show');
 });
 
 Template.body.events({
