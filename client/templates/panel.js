@@ -1,42 +1,89 @@
-Template.panel.onRendered(function () {
-    $('#mics.menu .item').tab();
-});
-
 Template.panel.helpers({
     mics: function() {
 	var criteria = Session.get('isListening') ? {} : {userAgent: navigator.userAgent};
 	var mics = Microphones.find();
 	return mics;
     },
-    pos: function() {
-        var region = $('.threshold')[0];
-        console.log($('.threshold').get(0));
-        console.log(region);
-        if (region) {
-            var pos = region.getBoundingClientRect();
-            console.log(pos);
-            return {left: pos.left, top: pos.top};
+});
+
+Template.mic.events({
+    'click a': function (event, template) {
+	var $tab = $(event.target);
+	$tab.addClass('active').siblings().removeClass('active');
+    }
+});
+
+Template.chart.helpers({
+    min: function () {
+        return Session.get("min");
+    },
+    max: function () {
+        return Session.get("max");
+    },
+    val: function () {
+        return Session.get("threshold");
+    }
+});
+
+Template.chart.onRendered(function () {
+/*    var slider = document.getElementById('slider');
+    console.log(slider);
+    if (slider) {
+        noUiSlider.create(slider, {
+            start: 20, // Handle start position
+            step: 10, // Slider moves in increments of '10'
+            connect: false, // Display a colored bar between the handles
+            direction: 'rtl', // Put '0' at the bottom of the slider
+            orientation: 'vertical', // Orient the slider vertically
+            range: {
+                // Starting at 500, step the value by 500,
+                // until 4000 is reached. From there, step by 1000.
+                'min': [ -0.25 ],
+                'max': [ 0.25 ]
+            }
+        });
+    }
+
+    slider.noUiSlider.on('update', function(values, handle){
+        Session.set("threshold", slider.noUiSlider.get());
+    });
+
+    //$('input[type="rangeslide"]').ionRangeSlider();
+    /*
+     var slider = $('#slider')[0];
+     if (slider) {
+     slider.min = Session.get("min");
+     slider.max = Session.get("max");
+     slider.step = (slider.max - slider - min) / 100.0;
+     slider.val(Session.get("threshold"));
+     } */
+});
+
+Template.handle.helpers({
+    threshold: function () {
+        return Session.get("threshold");
+    },
+    top: function () {
+        var pos = $('#slider').position();
+        if (pos) {
+            return pos.top;
         } else {
-            return null;
+            return 16;
         }
     },
 });
 
 Template.panel.events({
-});
-
-Template.mic.helpers({
-    semanticTab: function () {
-console.log(this);
-	console.log('semTab', $('#mics.menu .item'));
-	$('#mics.menu .item').tab();
-	Session.set('micTabsLoaded', true);
+    'change #slider': function (event) {
+        console.log(event.target.value);
+        console.log($('#slider'));
     },
-});
-
-Tracker.autorun(function () {
-    if (Session.get('micTabsLoaded') {
-	console.log('sessSemTab', $('#mics.menu .item'));
-	$('#mics.menu .item').tab();
+    'change .short': function(event) {
+        var id = event.target.id;
+        if (id == 'y-min') {
+            Session.set("min", event.target.value);
+        } else if (id == 'y-max') {
+            Session.set("max", event.target.value);
+        }
     }
 });

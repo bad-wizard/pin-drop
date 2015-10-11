@@ -19,6 +19,13 @@ Template.chart.rendered = function () {
                 enabled: true,
                 grouped: true,
                 multiple: true
+            },
+            color: function (color, data) {
+                if (data.value > Session.get("threshold")) {
+                    return d3.rgb(255,50,50);
+                } else {
+                    return d3.rgb(color);
+                }
             }
         },
         axis: {
@@ -50,5 +57,23 @@ Template.chart.rendered = function () {
                 Session.get('data3')
             ]
         });
+
+        var threshold = chart.regions()[0].start;
+        if (threshold != Session.get("threshold")) {
+            chart.regions()[0].start = Session.get("threshold");
+        }
+        /*
+        var rectangle = $('.threshold rect');
+        if (rectangle) {
+            var height = rectangle.attr('height');
+            if (height) {
+                Session.set("handle-height", (18 + parseInt(height)));
+            } else {
+                Session.set("handle-height", 18);
+            }
+        } */
+        Session.set("max", chart.axis.range().max.y);
+        Session.set("min", chart.axis.range().min.y);
+        chart.axis.range(Session.get("range"));
     });
 };

@@ -13,8 +13,7 @@
     <div class="ui bottom attached segment">
         {{#if currentUser}}
             {{> chart}}
-            <div class="" style="position: absolute; top: {{pos.top}}px;"></div>
-            <a class="ui red circular label" style="position: absolute; top: {{pos.top}}px;">{{pos.left}}</a>
+            {{> handle}}
             <div id = "control-panel">
                 {{> controls}}
             </div>
@@ -22,9 +21,19 @@
     </div>
 </template>
 
+
 <template name="mic">
 <a class="item {{#if $eq userAgent $.navigator.userAgent}}active{{/if}}">
     <i class="{{device}}"></i>
     {{name}}
 </a>
+</template>
+
+<template name="handle">
+    <div id="handle">
+        <div class="pin-pointer" style="top: {{top}}px;"></div>
+        <i class="pin-head huge red pin icon" style="top: {{top}}px;">
+            <a class="ui black circular label pin-head">{{threshold}}</a>
+        </i>
+    </div>
 </template>
