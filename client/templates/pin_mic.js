@@ -21,7 +21,7 @@ Template.add_mic_modal.events({
 	event.preventDefault();
         var form = event.target;
 
-        Meteor.call("addMic", form.name.value, form.device.value);
+        Meteor.call("addMic", form.name.value, form.device.value, navigator.userAgent);
     },
 });
 
