@@ -1,13 +1,8 @@
 <template name="panel">
     <div class="ui top attached tabular menu">
-        <a class="item">
-            <i class="laptop icon"></i>
-            Home
-        </a>
-        <a class="item">
-            <i class="mobile icon"></i>
-            Archimedes
-        </a>
+        {{#each mics}}
+	    {{> mic}}
+	{{/each}}
         <div class="right menu">
             {{> pin_mic}}
         </div>
@@ -22,4 +17,11 @@
             </div>
         {{/if}}
     </div>
+</template>
+
+<template name="mic">
+<a class="item">
+    <i class="{{device}}"></i>
+    {{name}}
+</a>
 </template>
