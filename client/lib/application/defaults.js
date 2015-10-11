@@ -1,4 +1,5 @@
 Session.setDefault('isListening', true);
+Session.setDefault('mic', null);
 Session.setDefault("x", ["x"]);
 Session.setDefault("data1", ["data1"]);
 Session.setDefault("data2", ["data2"]);

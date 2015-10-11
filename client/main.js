@@ -2,12 +2,9 @@ Accounts.ui.config({
     passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 });
 
-Meteor.startup(function (){
-//    $('#listen-or-record').modal('show');
-});
-
-Template.body.events({
-    'click .button': function (event) {
-        console.log(event.target);
+Tracker.autorun(function () {
+    var record = Records.findOne({microphone: Session.get('micID')});
+    if (Session.get('isListening') && record) {
+	Session.set('audioData', record.data);
     }
 });

@@ -10,6 +10,8 @@ var microphone = new Microphone({
         myWebAudioNode.connect(audioContext.destination);
         // instead you can also connect directly to its sourceNode, if you don't need onAudioData and onNoSignal handler methods
         // microphone.sourceNode.connect(myWebAudioNode);
+	Session.set('isListening', false);
+	Session.set('micID', Microphones.findOne({userAgent: navigator.userAgent})._id);
         Session.set("playing", true);
         console.log("Mic access successful!");
     },
@@ -23,7 +25,9 @@ var microphone = new Microphone({
         console.error("No getUserMedia and no Flash available in this browser!");
     },
     onAudioData: function(audioData){
-        Session.set("audioData", audioData);
+	if (!Session.get('isListening')) {
+            Session.set("audioData", audioData);
+	}
     }
 });
 
@@ -34,7 +38,15 @@ var collectData = function(){
     var timestamp = now.getHours() + ":" + now.getMinutes() + ":" + now.getSeconds();
 
     //THIS IS WHERE THE DATA SOURCE IS DETERMINED!
-    packet.push([timestamp, Session.get("audioData")]);
+    var audioData = Session.get('audioData');
+    packet.push([timestamp, audioData]);
+    if (!Session.get('isListening')) {
+	Meteor.call(
+	    'saveRecord',
+	    Session.get('micID'),
+	    audioData
+	)
+    }
 
     var length = packet.length;
     if (length > 0) {

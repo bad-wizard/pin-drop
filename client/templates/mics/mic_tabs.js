@@ -8,7 +8,9 @@ Template.mic_tabs.helpers({
 
 Template.mic_tab.events({
     'click a': function (event, template) {
+	var mic = this;
 	var $tab = $(event.target);
 	$tab.addClass('active').siblings().removeClass('active');
+	Session.set('micID', mic._id);
     }
 });
