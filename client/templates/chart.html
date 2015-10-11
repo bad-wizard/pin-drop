@@ -1,16 +1,16 @@
 <template name="chart">
     <div class = "chart"></div>
-    <input id="slider" type="range" min="{{min}}" max="{{max}}" orient="vertical"/>
+    <div id="slider" type="range"></div>
     <div class = "ui left stackable grid">
         <div class="ui five wide column">
             <div id="y-axis" class="ui mini right labeled input">
                 <i class="large pin icon" data-content="Pin the y axis"></i>
                 <div class="ui input short">
-                    <input id="y-min" type="text" placeholder="min y" autocomplete="off">
+                    <input id="y-min" type="text" placeholder="min y" autocomplete="off" value="{{min}}">
                 </div>
                 <div class="ui basic label">to</div>
                 <div class="ui input short">
-                    <input id="y-max" type="text" placeholder="max y" autocomplete="off">
+                    <input id="y-max" type="text" placeholder="max y" autocomplete="off" value="{{max}}">
                 </div>
                 <div class="ui basic label">hz</div>
             </div>

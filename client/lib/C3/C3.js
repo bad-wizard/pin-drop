@@ -62,7 +62,7 @@ Template.chart.rendered = function () {
         if (threshold != Session.get("threshold")) {
             chart.regions()[0].start = Session.get("threshold");
         }
-
+        /*
         var rectangle = $('.threshold rect');
         if (rectangle) {
             var height = rectangle.attr('height');
@@ -71,7 +71,7 @@ Template.chart.rendered = function () {
             } else {
                 Session.set("handle-height", 18);
             }
-        }
+        } */
         Session.set("max", chart.axis.range().max.y);
         Session.set("min", chart.axis.range().min.y);
         chart.axis.range(Session.get("range"));
