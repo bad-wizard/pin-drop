@@ -1,11 +1,3 @@
-Template.panel.helpers({
-    mics: function() {
-	var criteria = Session.get('isListening') ? {} : {userAgent: navigator.userAgent};
-	var mics = Microphones.find();
-	return mics;
-    },
-});
-
 Template.panel.events({
     'change #slider': function (event) {
         console.log(event.target.value);

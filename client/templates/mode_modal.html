@@ -1,0 +1,17 @@
+<template name="select_mode">
+    <a class="item" id="open-select-mode">
+        <i class="random icon"></i> Select Mode
+    </a>
+    
+    <div id = "listen-or-record" class="ui basic modal">
+        {{> mode_modal}}
+    </div>
+</template>
+
+<template name="mode_modal">
+    <div class="massive ui buttons actions">
+        <button id="listening" class="ui approve button">I'm Listening</button>
+        <div class="or"></div>
+        <button id="recording" class="ui approve black button">I'm Recording</button>
+    </div>
+</template>
