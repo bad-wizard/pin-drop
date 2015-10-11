@@ -1,0 +1,12 @@
+<template name="mic_tabs">
+{{#each mics}}
+    {{> mic}}
+{{/each}}
+</template>
+
+<template name="mic_tab">
+<a class="item {{#if $eq userAgent $.navigator.userAgent}}active{{/if}}">
+    <i class="{{device}}"></i>
+    {{name}}
+</a>
+</template>

@@ -1,10 +1,7 @@
 <template name="panel">
     <div class="ui top attached tabular menu">
         <div class="left menu" id="mics">
-        {{#each $mapped mics}}
-	    {{> mic}}
-	    {{#if $last}}{{semanticTab}}{{/if}}
-	{{/each}}
+	    {{> mic_tabs}}
 	</div>
         <div class="right menu">
             {{> pin_mic}}
@@ -19,14 +16,6 @@
             </div>
         {{/if}}
     </div>
-</template>
-
-
-<template name="mic">
-<a class="item {{#if $eq userAgent $.navigator.userAgent}}active{{/if}}">
-    <i class="{{device}}"></i>
-    {{name}}
-</a>
 </template>
 
 <template name="handle">
